@@ -3,14 +3,14 @@
 
 create table if not exists leagues (
   id serial primary key,
-  name text not null,
+  name text not null unique,
   country text,
   external_ids jsonb default '{}'
 );
 
 create table if not exists teams (
   id serial primary key,
-  name text not null,
+  name text not null unique,
   external_ids jsonb default '{}'
 );
 
