@@ -6,31 +6,11 @@ import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "csv-parse/sync";
 import "./_env.js";
+import { TEAM_CANONICAL, canon } from "../lib/teams.js";
+
+export { TEAM_CANONICAL, canon };
 
 const RAW_DIR = join(process.cwd(), "data", "raw");
-
-// Cortos del CSV -> canónico (el que usan las APIs). Lo no listado pasa tal cual y se reporta.
-export const TEAM_CANONICAL: Record<string, string> = {
-  "Man United": "Manchester United",
-  "Man City": "Manchester City",
-  "Nott'm Forest": "Nottingham Forest",
-  Tottenham: "Tottenham Hotspur",
-  Newcastle: "Newcastle United",
-  Wolves: "Wolverhampton Wanderers",
-  "West Ham": "West Ham United",
-  Leeds: "Leeds United",
-  "West Brom": "West Bromwich Albion",
-  Sheffield: "Sheffield United",
-  "Sheffield Utd": "Sheffield United",
-  Leicester: "Leicester City",
-  Norwich: "Norwich City",
-  Ipswich: "Ipswich Town",
-};
-
-export function canon(name: string): string {
-  const t = name.trim();
-  return TEAM_CANONICAL[t] ?? t;
-}
 
 function seasonFromFile(file: string): number {
   const m = file.match(/E0_(\d\d)(\d\d)\.csv$/);

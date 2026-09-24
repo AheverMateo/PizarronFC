@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "csv:dry": "tsx scripts/load-csv.ts",
     "csv:load": "tsx scripts/load-csv.ts --write",
-    "next7d": "tsx scripts/fetch-next7d.ts"
+    "next7d": "tsx scripts/fetch-next7d.ts",
+    "backtest": "tsx scripts/backtest.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0",
