@@ -22,3 +22,20 @@ export function canon(name: string): string {
   const t = name.trim();
   return TEAM_CANONICAL[t] ?? t;
 }
+
+// Nombres de football-data.org ("Arsenal FC", "AFC Bournemouth") -> canónico.
+// Orden: quita prefijo AFC / sufijos FC-AFC, colapsa casos especiales, aplica canon().
+const API_SPECIAL: Record<string, string> = {
+  "Brighton & Hove Albion": "Brighton",
+  "Brighton and Hove Albion": "Brighton",
+  Wolverhampton: "Wolverhampton Wanderers",
+  Bournemouth: "Bournemouth",
+};
+
+export function apiNameToCanon(apiName: string): string {
+  let n = apiName.trim();
+  n = n.replace(/^AFC\s+/i, "");
+  n = n.replace(/\s+(AFC|FC)$/i, "");
+  n = API_SPECIAL[n] ?? n;
+  return canon(n);
+}

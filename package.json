@@ -11,7 +11,9 @@
     "csv:dry": "tsx scripts/load-csv.ts",
     "csv:load": "tsx scripts/load-csv.ts --write",
     "next7d": "tsx scripts/fetch-next7d.ts",
-    "backtest": "tsx scripts/backtest.ts"
+    "backtest": "tsx scripts/backtest.ts",
+    "sync:matches": "tsx scripts/sync-matches.ts",
+    "sync:odds": "tsx scripts/sync-odds.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0",
